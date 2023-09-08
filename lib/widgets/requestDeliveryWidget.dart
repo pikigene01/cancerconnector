@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pikideliveryapp/pages/home_page.dart';
+import 'package:cancerconnector/pages/home_page.dart';
 
 import '../services/calculate_distance.dart';
 import '../services/geo_locator_service.dart';

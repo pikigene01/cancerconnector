@@ -14,7 +14,7 @@ class GeoLocationService {
       // App to enable the location services.
       obj['error'] = true;
       obj['msg'] =
-          'Location services are disabled. PikiDelivery needs location to be enabled';
+          'Location services are disabled. cancerconnector needs location to be enabled';
 
       return obj;
     }
@@ -24,7 +24,7 @@ class GeoLocationService {
       if (permission == LocationPermission.denied) {
         obj['error'] = true;
         obj['msg'] =
-            'Location permissions are denied PikiDelivery needs device location to work';
+            'Location permissions are denied cancerconnector needs device location to work';
         return obj;
       }
     }
@@ -32,7 +32,7 @@ class GeoLocationService {
     if (permission == LocationPermission.deniedForever) {
       obj['error'] = true;
       obj['msg'] =
-          'Location permissions are permanently denied, PikiDelivery can not request permissions.';
+          'Location permissions are permanently denied, cancerconnector can not request permissions.';
       return obj;
     }
 

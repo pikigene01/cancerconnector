@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:pikideliveryapp/pages/provile_page.dart';
-import 'package:pikideliveryapp/widgets/liked.dart';
+import 'package:cancerconnector/pages/provile_page.dart';
+import 'package:cancerconnector/widgets/liked.dart';
 
 import '../models/product_model.dart';
 import '../themes/styles.dart';
@@ -61,7 +61,7 @@ class _CartPageState extends State<CartPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Center(child: PikiDeliveryAds()),
+              const Center(child: cancerconnectorAds()),
               const SizedBox(
                 height: 20,
               ),

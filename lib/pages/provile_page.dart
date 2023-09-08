@@ -52,12 +52,12 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const Center(child: PikiDeliveryAds()),
+            const Center(child: cancerconnectorAds()),
             const SizedBox(
               height: 10,
             ),
             pikiappLink(
-              text: 'Welcome to PikiDeliveryApp',
+              text: 'Welcome to cancerconnector',
               width: size.width,
             ),
             InkWell(
@@ -72,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Expanded(
                     child: pikiappLink(
-                        text: 'About PikiDeliveryApp',
+                        text: 'About cancerconnector',
                         width: size.width - 20,
                         alignment: CrossAxisAlignment.start,
                         style: const TextStyle(
@@ -127,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Expanded(
                     child: pikiappLink(
-                        text: 'Services PikiDeliveryApp',
+                        text: 'Services cancerconnector',
                         width: size.width - 20,
                         alignment: CrossAxisAlignment.start,
                         style: const TextStyle(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class PikiDeliveryAds extends StatefulWidget {
-  const PikiDeliveryAds({super.key});
+class cancerconnectorAds extends StatefulWidget {
+  const cancerconnectorAds({super.key});
 
   @override
-  State<PikiDeliveryAds> createState() => _PikiDeliveryAdsState();
+  State<cancerconnectorAds> createState() => _cancerconnectorAdsState();
 }
 
-class _PikiDeliveryAdsState extends State<PikiDeliveryAds> {
+class _cancerconnectorAdsState extends State<cancerconnectorAds> {
   var adUnit = "ca-app-pub-2647169021297696/6055440446"; //real ad unit
   late BannerAd bannerAd;
   bool isLoaded = false;

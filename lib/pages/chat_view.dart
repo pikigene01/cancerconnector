@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pikideliveryapp/services/chat_service.dart';
+import 'package:cancerconnector/services/chat_service.dart';
 
 import '../widgets/chat_bubble.dart';
 import '../widgets/piki_app_ads.dart';
@@ -66,7 +66,7 @@ class _ChatViewPageState extends State<ChatViewPage> {
   Widget getBody() {
     return Column(
       children: [
-        const Center(child: PikiDeliveryAds()),
+        const Center(child: cancerconnectorAds()),
         const SizedBox(
           height: 4,
         ),

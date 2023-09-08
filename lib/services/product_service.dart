@@ -10,7 +10,7 @@ class ProductService extends ChangeNotifier {
   //get instance auth
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
-  final _firebaseNotifications = PikiDeliveryNotifications();
+  final _firebaseNotifications = cancerconnectorNotifications();
 
   Future<void> saveProduct(
       {required String? userEmail,

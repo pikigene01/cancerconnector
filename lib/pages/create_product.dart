@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as p;
-import 'package:pikideliveryapp/pages/home_page.dart';
+import 'package:cancerconnector/pages/home_page.dart';
 import '../services/geo_locator_service.dart';
 import '../services/product_service.dart';
 import '../themes/styles.dart';
@@ -165,7 +165,7 @@ class _UserCreateProductState extends State<UserCreateProduct> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const PikiDeliveryAds(),
+                const cancerconnectorAds(),
                 const SizedBox(
                   height: 20,
                 ),

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
-import 'package:pikideliveryapp/pages/home_page.dart';
+import 'package:cancerconnector/pages/home_page.dart';
 
 import '../models/save_token.dart';
 import '../models/send_notification_model.dart';
@@ -16,7 +16,7 @@ Future<void> _firebasebackgroundhandler(RemoteMessage message) async {
   print('Title: ${message.data}');
 }
 
-class PikiDeliveryNotifications {
+class cancerconnectorNotifications {
   final _firebaseMessaging = FirebaseMessaging.instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
@@ -27,7 +27,7 @@ class PikiDeliveryNotifications {
     // if (_firebaseAuth.currentUser!.email.toString().isNotEmpty) {
     // final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
 
-    //   PikiDeliveryAppDeviceToken newToken = PikiDeliveryAppDeviceToken(
+    //   cancerconnectorDeviceToken newToken = cancerconnectorDeviceToken(
     //     email: currentUserEmail,
     //     token: fCMToken.toString(),
     //   );
@@ -64,8 +64,8 @@ class PikiDeliveryNotifications {
       {required String deviceId,
       required String title,
       required String body}) async {
-    PikiDeliveryAppNotificationMessage newMessage =
-        PikiDeliveryAppNotificationMessage(title: title, body: body);
+    cancerconnectorNotificationMessage newMessage =
+        cancerconnectorNotificationMessage(title: title, body: body);
 
     // await _firebaseMessaging.sendMessage(to: deviceId, data: {
     //   'click_action': 'FLUTTER_NOTIFICATION_CLICK',
@@ -94,7 +94,7 @@ class PikiDeliveryNotifications {
               "notification": <String, dynamic>{
                 'title': title,
                 'body': body,
-                'android_channel_id': 'pikideliveryapp'
+                'android_channel_id': 'cancerconnector'
               },
               "to": deviceId,
             },

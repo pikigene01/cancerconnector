@@ -249,7 +249,7 @@ class _ProductViewPageState extends State<ProductViewPage> {
                     requestDelivery(product: widget.product);
                   },
                 ),
-                const Center(child: PikiDeliveryAds()),
+                const Center(child: cancerconnectorAds()),
               ],
             ),
           ),

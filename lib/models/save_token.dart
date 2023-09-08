@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class PikiDeliveryAppDeviceToken {
+class cancerconnectorDeviceToken {
   final String email;
   final String token;
 
-  PikiDeliveryAppDeviceToken({
+  cancerconnectorDeviceToken({
     required this.email,
     required this.token,
   });

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pikideliveryapp/widgets/piki_app_ads.dart';
+import 'package:cancerconnector/widgets/piki_app_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../themes/styles.dart';
@@ -31,7 +31,7 @@ class _ContactGenePikiState extends State<ContactGenePiki> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contact: pikideliveryapp@gmail.com"),
+        title: const Text("Contact: cancerconnector@gmail.com"),
         backgroundColor: Colors.black,
         actions: [
           IconButton(
@@ -53,7 +53,7 @@ class _ContactGenePikiState extends State<ContactGenePiki> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Center(child: PikiDeliveryAds()),
+          const Center(child: cancerconnectorAds()),
           const SizedBox(
             height: 10,
           ),
@@ -70,7 +70,7 @@ class _ContactGenePikiState extends State<ContactGenePiki> {
             height: 10,
           ),
           Text(
-            'Email: pikideliveryapp@gmail.com',
+            'Email: cancerconnector@gmail.com',
             style: appStyleTextActive,
           ),
           const Divider(),

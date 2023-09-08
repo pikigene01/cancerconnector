@@ -47,36 +47,38 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyDpOt1V5h9h-pRq1_Ov41KVUqe332wl698',
     appId: '1:111350797979:web:ffd251b368e8c2f381983e',
     messagingSenderId: '111350797979',
-    projectId: 'pikideliveryapp',
-    authDomain: 'pikideliveryapp.firebaseapp.com',
-    storageBucket: 'pikideliveryapp.appspot.com',
+    projectId: 'cancerconnector',
+    authDomain: 'cancerconnector.firebaseapp.com',
+    storageBucket: 'cancerconnector.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC8Upcbv7I1FsYILR1VW8ucPMykwSjrpvk',
     appId: '1:111350797979:android:7ceb0b5c2c73712381983e',
     messagingSenderId: '111350797979',
-    projectId: 'pikideliveryapp',
-    storageBucket: 'pikideliveryapp.appspot.com',
+    projectId: 'cancerconnector',
+    storageBucket: 'cancerconnector.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCXPqKQ-NqWSJuxTOTxOXekaU2UU1PiCiU',
     appId: '1:111350797979:ios:bc5246ad9723d03f81983e',
     messagingSenderId: '111350797979',
-    projectId: 'pikideliveryapp',
-    storageBucket: 'pikideliveryapp.appspot.com',
-    iosClientId: '111350797979-qlq2qarnb5n145t98rrkh1apftpldc08.apps.googleusercontent.com',
-    iosBundleId: 'com.pikidelivery.pikideliveryapp',
+    projectId: 'cancerconnector',
+    storageBucket: 'cancerconnector.appspot.com',
+    iosClientId:
+        '111350797979-qlq2qarnb5n145t98rrkh1apftpldc08.apps.googleusercontent.com',
+    iosBundleId: 'com.cancerconnector.cancerconnector',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCXPqKQ-NqWSJuxTOTxOXekaU2UU1PiCiU',
     appId: '1:111350797979:ios:aa1dad333e98fd5781983e',
     messagingSenderId: '111350797979',
-    projectId: 'pikideliveryapp',
-    storageBucket: 'pikideliveryapp.appspot.com',
-    iosClientId: '111350797979-r0dqqhd90o747nfna8qa1d14dn8ot0gq.apps.googleusercontent.com',
-    iosBundleId: 'com.pikidelivery.pikideliveryapp.RunnerTests',
+    projectId: 'cancerconnector',
+    storageBucket: 'cancerconnector.appspot.com',
+    iosClientId:
+        '111350797979-r0dqqhd90o747nfna8qa1d14dn8ot0gq.apps.googleusercontent.com',
+    iosBundleId: 'com.cancerconnector.cancerconnector.RunnerTests',
   );
 }

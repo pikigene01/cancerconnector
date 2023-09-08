@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class PikiDeliveryAppNotificationMessage {
+class cancerconnectorNotificationMessage {
   final String title;
   final String body;
 
-  PikiDeliveryAppNotificationMessage({
+  cancerconnectorNotificationMessage({
     required this.title,
     required this.body,
   });

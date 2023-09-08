@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "111350797979",
-    "project_id": "pikideliveryapp",
-    "storage_bucket": "pikideliveryapp.appspot.com"
+    "project_id": "cancerconnector",
+    "storage_bucket": "cancerconnector.appspot.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:111350797979:android:7ceb0b5c2c73712381983e",
         "android_client_info": {
-          "package_name": "com.pikidelivery.pikideliveryapp"
+          "package_name": "com.cancerconnector.cancerconnector"
         }
       },
       "oauth_client": [
