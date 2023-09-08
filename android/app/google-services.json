@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "111350797979",
+    "project_id": "pikideliveryapp",
+    "storage_bucket": "pikideliveryapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111350797979:android:7ceb0b5c2c73712381983e",
+        "android_client_info": {
+          "package_name": "com.pikidelivery.pikideliveryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111350797979-uoshc4vbv24m6c1duiq7cpdn0v0ggeca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8Upcbv7I1FsYILR1VW8ucPMykwSjrpvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111350797979-uoshc4vbv24m6c1duiq7cpdn0v0ggeca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
