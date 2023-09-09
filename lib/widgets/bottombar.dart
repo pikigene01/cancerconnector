@@ -3,13 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../json/json_app.dart';
-import '../pages/cart_page.dart';
-import '../pages/chat_screen.dart';
 import '../pages/home_page.dart';
-import '../pages/loginsignin.dart';
-import '../services/auth_chat_guard.dart';
-import '../services/auth_create_product_guard.dart';
-import '../services/auth_gate.dart';
 import '../themes/styles.dart';
 
 class BottomBar extends StatefulWidget {
@@ -73,21 +67,21 @@ class _BottomBarState extends State<BottomBar> {
       animationCurve: Curves.bounceInOut,
       onTap: (index) {
         if (menusRoutes[index]['page'].toLowerCase().contains('messages')) {
-          Get.to(() => const AuthChatGuard());
+          Get.to(() => null);
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('location')) {
           Get.to(() => const HomePage());
         } else if (menusRoutes[index]['page'].toLowerCase().contains('liked')) {
-          Get.to(() => const CartPage());
+          Get.to(() => null);
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('profile')) {
-          Get.to(() => const AuthGate());
+          Get.to(() => null);
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('settings')) {
-          Get.to(() => const AuthCreateProductGuard());
+          Get.to(() => null);
         }
 
         setState(() {

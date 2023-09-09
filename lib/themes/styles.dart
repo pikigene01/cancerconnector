@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const primaryColor = Colors.black;
+const primaryColor = Colors.pink;
 const appTextColor = Colors.grey;
 TextStyle iconText = const TextStyle(fontSize: 20, fontWeight: FontWeight.w100);
 TextStyle appStyleText = const TextStyle(
