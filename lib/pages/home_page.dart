@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int activeMenu = 0;
   bool isSearching = false;
-  final _productService = ProductService();
   final geoloocationService = GeoLocationService();
 
   String? addressFromLocation = "";
@@ -27,9 +26,6 @@ class _HomePageState extends State<HomePage> {
   String? latitude = "";
   String? country = "";
   bool locating = false;
-
-  final TextEditingController _searchController = TextEditingController();
-  final ScrollController _scrollcontroller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
