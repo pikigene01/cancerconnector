@@ -1,10 +1,10 @@
-List menus = ["Piki Delivery", "Contact Us", "Search"];
+List menus = ["Blood Donation", "Contact Us", "Search"];
 List menusRoutes = [
-  {"page": "Location", "icon": "FontAwesomeIcons.solidCompass"},
-  {"page": "Liked", "icon": "FontAwesomeIcons.heart"},
-  {"page": "Profile", "icon": "FontAwesomeIcons.user"},
-  {"page": "Messages", "icon": "FontAwesomeIcons.solidMessage"},
-  {"page": "Settings", "icon": "FontAwesomeIcons.sliders"}
+  {"page": "Home", "icon": "FontAwesomeIcons.home"},
+  {"page": "Search", "icon": "FontAwesomeIcons.search"},
+  {"page": "Donation", "icon": "FontAwesomeIcons.user"},
+  {"page": "Analysis", "icon": "FontAwesomeIcons.solidMessage"},
+  {"page": "Profile", "icon": "FontAwesomeIcons.profile"}
 ];
 List menuSlides = [
   {"title": "Winery", "image": "assets/wine.png"},

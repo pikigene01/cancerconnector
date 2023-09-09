@@ -23,39 +23,46 @@ class _BottomBarState extends State<BottomBar> {
       height: 60,
       index: widget.index,
       items: List.generate(menusRoutes.length, (index) {
-        String menuIcon = menusRoutes[index]['icon'];
+        String menuIcon = menusRoutes[index]['page'];
         Widget? icon;
-        if (menuIcon.contains('solidCompass')) {
+        if (menuIcon.contains('Home')) {
           icon = const FaIcon(
-            FontAwesomeIcons.solidCompass,
+            FontAwesomeIcons.home,
             size: 27,
             color: Colors.white,
           );
-        } else if (menuIcon.contains('heart')) {
+        } else if (menuIcon.contains('Search')) {
           icon = const FaIcon(
-            FontAwesomeIcons.heart,
+            FontAwesomeIcons.search,
             size: 27,
             color: Colors.white,
           );
-        } else if (menuIcon.contains('user')) {
+        } else if (menuIcon.contains('Donation')) {
+          icon = const FaIcon(
+            FontAwesomeIcons.donate,
+            size: 27,
+            color: Colors.white,
+          );
+        } else if (menuIcon.contains('Analysis')) {
+          icon = const FaIcon(
+            FontAwesomeIcons.trademark,
+            size: 27,
+            color: Colors.white,
+          );
+        } else if (menuIcon.contains('User')) {
           icon = const FaIcon(
             FontAwesomeIcons.user,
             size: 27,
             color: Colors.white,
           );
-        } else if (menuIcon.contains('Message')) {
+        } else if (menuIcon.contains('Profile')) {
           icon = const FaIcon(
-            FontAwesomeIcons.solidMessage,
-            size: 27,
-            color: Colors.white,
-          );
-        } else if (menuIcon.contains('sliders')) {
-          icon = const FaIcon(
-            FontAwesomeIcons.sliders,
+            FontAwesomeIcons.user,
             size: 27,
             color: Colors.white,
           );
         }
+
         return Container(
           child: icon,
         );
