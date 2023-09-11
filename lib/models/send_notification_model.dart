@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class cancerconnectorNotificationMessage {
+class CancerconnectorNotificationMessage {
   final String title;
   final String body;
 
-  cancerconnectorNotificationMessage({
+  CancerconnectorNotificationMessage({
     required this.title,
     required this.body,
   });

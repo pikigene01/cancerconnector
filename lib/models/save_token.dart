@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class cancerconnectorDeviceToken {
+class CancerconnectorDeviceToken {
   final String email;
   final String token;
 
-  cancerconnectorDeviceToken({
+  CancerconnectorDeviceToken({
     required this.email,
     required this.token,
   });
