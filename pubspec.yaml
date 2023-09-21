@@ -90,6 +90,7 @@ flutter:
     - assets/wine.png
     - assets/wine2.jpg
     - assets/iphone.jpg
+    - assets/blood.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

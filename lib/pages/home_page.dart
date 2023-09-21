@@ -1,3 +1,4 @@
+import 'package:cancerconnector/json/json_app.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/bottombar.dart';
@@ -31,6 +32,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
-    return Container();
+    return SafeArea(
+      child: Column(
+        children: [...menuSlides.map<Widget>((data) => Text(data['image']))],
+      ),
+    );
   }
 }
