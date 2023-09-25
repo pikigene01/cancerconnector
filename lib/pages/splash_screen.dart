@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
             width: 100,
             height: 100,
             child: Image.asset(
-              'assets/blood.jpg',
+              'assets/Vector 2.png',
               fit: BoxFit.scaleDown,
             ),
           ),
