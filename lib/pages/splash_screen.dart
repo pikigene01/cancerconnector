@@ -15,7 +15,6 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: primaryColor,
       body: getBody(),
-      bottomNavigationBar: const BottomBar(index: 1),
     );
   }
 

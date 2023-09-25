@@ -7,12 +7,13 @@ import '../pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  var loading = true;
   runApp(
     ChangeNotifierProvider(
       create: (context) => AuthService(),
       child: const GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: HomePage(),
       ),
     ),
   );

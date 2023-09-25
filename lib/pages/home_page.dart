@@ -34,7 +34,24 @@ class _HomePageState extends State<HomePage> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Column(
-        children: [...menuSlides.map<Widget>((data) => Text(data['image']))],
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  "assets/Rectangle 30.png",
+                  width: 20,
+                ),
+                Image.asset(
+                  "assets/Vector.png",
+                  width: 20,
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

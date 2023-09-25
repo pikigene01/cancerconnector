@@ -38,14 +38,14 @@ class _BottomBarState extends State<BottomBar> {
             color: Colors.white,
           );
         } else if (menuIcon.contains('Donation')) {
-          icon = const FaIcon(
-            FontAwesomeIcons.donate,
-            size: 27,
-            color: Colors.white,
+          icon = Image.asset(
+            'assets/Blood Drop.png',
+            fit: BoxFit.scaleDown,
+            height: 80,
           );
         } else if (menuIcon.contains('Analysis')) {
           icon = const FaIcon(
-            FontAwesomeIcons.trademark,
+            FontAwesomeIcons.message,
             size: 27,
             color: Colors.white,
           );
@@ -79,7 +79,9 @@ class _BottomBarState extends State<BottomBar> {
             .toLowerCase()
             .contains('location')) {
           Get.to(() => const HomePage());
-        } else if (menusRoutes[index]['page'].toLowerCase().contains('liked')) {
+        } else if (menusRoutes[index]['page']
+            .toLowerCase()
+            .contains('search')) {
           Get.to(() => null);
         } else if (menusRoutes[index]['page']
             .toLowerCase()
