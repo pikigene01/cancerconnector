@@ -1,4 +1,5 @@
 import 'package:cancerconnector/json/json_app.dart';
+import 'package:cancerconnector/services/auth_service.dart';
 import 'package:cancerconnector/themes/app_strings.dart';
 import 'package:cancerconnector/themes/styles.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,18 @@ class _HomePageState extends State<HomePage> {
               const Divider(
                 height: 8,
                 color: Colors.white,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              InkWell(
+                onTap: () async {
+                  await AuthService().signOut();
+                },
+                child: const Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),
