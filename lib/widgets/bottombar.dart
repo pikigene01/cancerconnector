@@ -27,7 +27,7 @@ class _BottomBarState extends State<BottomBar> {
         Widget? icon;
         if (menuIcon.contains('Home')) {
           icon = const FaIcon(
-            FontAwesomeIcons.blog,
+            FontAwesomeIcons.houseChimneyUser,
             size: 27,
             color: Colors.white,
           );
