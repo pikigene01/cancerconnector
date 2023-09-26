@@ -1,3 +1,5 @@
+import 'package:cancerconnector/pages/profilepage.dart';
+import 'package:cancerconnector/pages/searchpage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -82,15 +84,17 @@ class _BottomBarState extends State<BottomBar> {
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('search')) {
-          Get.to(() => null);
+          Get.to(() => const SearchPage());
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('profile')) {
-          Get.to(() => null);
+          Get.to(() => const ProfilePage());
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('settings')) {
           Get.to(() => null);
+        } else if (menusRoutes[index]['page'].toLowerCase().contains('home')) {
+          Get.to(() => const HomePage());
         }
 
         setState(() {
