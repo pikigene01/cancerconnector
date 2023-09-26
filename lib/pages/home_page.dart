@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     customMenus(
                         size: size,
-                        title: "Find Donors",
+                        title: "Find Doctors",
                         imgPath: "assets/ion_search-outline.png"),
                     customMenus(
                         size: size,

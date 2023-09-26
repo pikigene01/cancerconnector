@@ -1,6 +1,7 @@
 import 'package:cancerconnector/pages/messagespage.dart';
 import 'package:cancerconnector/pages/profilepage.dart';
 import 'package:cancerconnector/pages/searchpage.dart';
+import 'package:cancerconnector/services/auth_gate.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -77,7 +78,7 @@ class _BottomBarState extends State<BottomBar> {
       animationCurve: Curves.bounceInOut,
       onTap: (index) {
         if (menusRoutes[index]['page'].toLowerCase().contains('message')) {
-          Get.to(() => const MessagesPage());
+          Get.to(() => const AuthGate());
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('location')) {
