@@ -1,4 +1,5 @@
 import 'package:cancerconnector/pages/splash_screen.dart';
+import 'package:cancerconnector/pages/welcomepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cancerconnector/services/auth_service.dart';
@@ -13,7 +14,7 @@ void main() async {
       create: (context) => AuthService(),
       child: const GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: WelocomePage(),
       ),
     ),
   );
