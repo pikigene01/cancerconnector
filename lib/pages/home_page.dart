@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int activeMenu = 0;
   bool isSearching = false;
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
 
   String? addressFromLocation = "";
   String? longitude = "";
@@ -24,10 +25,37 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: getBody(),
+      key: _globalKey,
       bottomNavigationBar: const BottomBar(
         index: 0,
+      ),
+      drawer: getDrawer(size: size),
+    );
+  }
+
+  Widget getDrawer({required size}) {
+    return SafeArea(
+      child: Drawer(
+        width: size.width / 2,
+        backgroundColor: Colors.black.withOpacity(0.7),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text(
+                appName,
+                style: appStyleText,
+              ),
+              const Divider(
+                height: 8,
+                color: Colors.white,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -43,9 +71,14 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(
-                    "assets/Group 17.png",
-                    width: 20,
+                  InkWell(
+                    onTap: () {
+                      _globalKey.currentState!.openDrawer();
+                    },
+                    child: Image.asset(
+                      "assets/Group 17.png",
+                      width: 20,
+                    ),
                   ),
                   Image.asset(
                     "assets/Vector.png",
