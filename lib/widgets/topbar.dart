@@ -15,7 +15,7 @@ Widget topBar({required String pageTitle, required size}) {
         ),
       ),
       SizedBox(
-        width: size.width / 3,
+        width: size.width / 4,
       ),
       Text(
         pageTitle,

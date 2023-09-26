@@ -1,3 +1,4 @@
+import 'package:cancerconnector/pages/messagespage.dart';
 import 'package:cancerconnector/pages/profilepage.dart';
 import 'package:cancerconnector/pages/searchpage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -45,7 +46,7 @@ class _BottomBarState extends State<BottomBar> {
             fit: BoxFit.scaleDown,
             height: 80,
           );
-        } else if (menuIcon.contains('Analysis')) {
+        } else if (menuIcon.contains('Message')) {
           icon = const FaIcon(
             FontAwesomeIcons.message,
             size: 27,
@@ -75,8 +76,8 @@ class _BottomBarState extends State<BottomBar> {
       ),
       animationCurve: Curves.bounceInOut,
       onTap: (index) {
-        if (menusRoutes[index]['page'].toLowerCase().contains('messages')) {
-          Get.to(() => null);
+        if (menusRoutes[index]['page'].toLowerCase().contains('message')) {
+          Get.to(() => const MessagesPage());
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('location')) {

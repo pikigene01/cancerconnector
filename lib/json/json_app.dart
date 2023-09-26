@@ -3,7 +3,7 @@ List menusRoutes = [
   {"page": "Home", "icon": "FontAwesomeIcons.home"},
   {"page": "Search", "icon": "FontAwesomeIcons.search"},
   {"page": "Donation", "icon": "FontAwesomeIcons.user"},
-  {"page": "Analysis", "icon": "FontAwesomeIcons.solidMessage"},
+  {"page": "Message", "icon": "FontAwesomeIcons.solidMessage"},
   {"page": "Profile", "icon": "FontAwesomeIcons.profile"}
 ];
 List menuSlides = [
