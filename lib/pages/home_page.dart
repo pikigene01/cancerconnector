@@ -34,97 +34,124 @@ class _HomePageState extends State<HomePage> {
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  "assets/Group 17.png",
-                  width: 20,
-                ),
-                Image.asset(
-                  "assets/Vector.png",
-                  width: 20,
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: size.width,
-              height: 200,
-              decoration: const BoxDecoration(
-                  gradient:
-                      LinearGradient(colors: [primaryColor, appTextColor]),
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(50),
-                    topLeft: Radius.circular(6),
-                    bottomLeft: Radius.circular(6),
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    "assets/Group 17.png",
+                    width: 20,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: Offset(5, 10),
-                        blurRadius: 10,
-                        color: appTextColor)
-                  ]),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        bannerTitle,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                            fontSize: 30),
-                      ),
+                  Image.asset(
+                    "assets/Vector.png",
+                    width: 20,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: size.width,
+                height: 200,
+                decoration: const BoxDecoration(
+                    gradient:
+                        LinearGradient(colors: [primaryColor, appTextColor]),
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(50),
+                      topLeft: Radius.circular(6),
+                      bottomLeft: Radius.circular(6),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 30, left: 10, right: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            startNowText,
-                            style: appStyleText,
-                          ),
-                          const Icon(
-                            Icons.access_alarm,
-                            color: Colors.white,
-                          )
-                        ],
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(5, 10),
+                          blurRadius: 10,
+                          color: appTextColor)
+                    ]),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          bannerTitle,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                              fontSize: 30),
+                        ),
                       ),
-                    )
-                  ]),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 30, left: 10, right: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              startNowText,
+                              style: appStyleText,
+                            ),
+                            const Icon(
+                              Icons.access_alarm,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      )
+                    ]),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              children: [
-                customMenus(
-                    size: size,
-                    title: "Gene Piki",
-                    imgPath: "assets/ion_search-outline.png"),
-                customMenus(
-                    size: size,
-                    title: "Gene Piki",
-                    imgPath: "assets/ion_search-outline.png"),
-                customMenus(
-                    size: size,
-                    title: "Gene Piki",
-                    imgPath: "assets/ion_search-outline.png"),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    customMenus(
+                        size: size,
+                        title: "Find Donors",
+                        imgPath: "assets/ion_search-outline.png"),
+                    customMenus(
+                        size: size,
+                        title: "Donates",
+                        imgPath: "assets/openmoji_blood-transfusion.png"),
+                    customMenus(
+                        size: size,
+                        title: "Order Bloods",
+                        imgPath: "assets/si-glyph_blood-bag.png"),
+                  ],
+                ),
+              ),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    customMenus(
+                        size: size,
+                        title: "Assistant",
+                        imgPath: "assets/maki_doctor-11.png"),
+                    customMenus(
+                        size: size,
+                        title: "Report",
+                        imgPath: "assets/la_file-medical-alt.png"),
+                    customMenus(
+                        size: size,
+                        title: "Campaign",
+                        imgPath: "assets/grommet-icons_announce.png"),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -152,10 +179,15 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(imgPath),
-            Text(
-              title,
-              style: const TextStyle(color: Colors.black),
+            Image.asset(
+              imgPath,
+              height: 40,
+            ),
+            FittedBox(
+              child: Text(
+                title,
+                style: const TextStyle(color: Colors.black),
+              ),
             ),
           ],
         ),
