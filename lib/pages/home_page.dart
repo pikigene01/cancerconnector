@@ -95,7 +95,10 @@ class _HomePageState extends State<HomePage> {
                             startNowText,
                             style: appStyleText,
                           ),
-                          const Icon(Icons.access_alarm)
+                          const Icon(
+                            Icons.access_alarm,
+                            color: Colors.white,
+                          )
                         ],
                       ),
                     )
