@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../widgets/_userBubble.dart';
 import '../widgets/getSearch.dart';
+import 'chat_view.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({super.key});
@@ -93,10 +94,10 @@ class _MessagesPageState extends State<MessagesPage> {
                     top: 9.0, bottom: 13, left: 10, right: 10),
                 child: InkWell(
                   onTap: () {
-                    // Get.to(() => ChatViewPage(
-                    //       receiverEmail: data['email'],
-                    //       receiverUserId: data['uid'],
-                    //     ));
+                    Get.to(() => ChatViewPage(
+                          receiverEmail: data['email'],
+                          receiverUserId: data['uid'],
+                        ));
                   },
                   child: userBubble(name: data['email'].toString(), size: size),
                 ),
