@@ -22,12 +22,18 @@ class _FindDonorsPageState extends State<FindDonorsPage> {
   }
 
   Widget getBody({required size}) {
-    return SafeArea(
-        child: Column(
-      children: [
-        topBar(pageTitle: "Find Doctors", size: size),
-        doctorsCard(size: size, doctor: doctors[1]),
-      ],
-    ));
+    return SingleChildScrollView(
+      child: SafeArea(
+          child: Column(
+        children: [
+          topBar(pageTitle: "Find Doctors", size: size),
+          Column(
+            children: doctors.reversed
+                .map((doctor) => doctorsCard(size: size, doctor: doctor))
+                .toList(),
+          ),
+        ],
+      )),
+    );
   }
 }

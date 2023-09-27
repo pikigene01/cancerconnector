@@ -1,5 +1,6 @@
 import 'package:cancerconnector/pages/login.dart';
 import 'package:cancerconnector/pages/messagespage.dart';
+import 'package:cancerconnector/pages/welcomepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _AuthGateState extends State<AuthGate> {
           if (snapshot.hasData) {
             return const MessagesPage();
           } else {
-            return const LogInSignUp();
+            return const WelocomePage();
           }
         },
       ),

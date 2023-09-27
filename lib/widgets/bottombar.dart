@@ -1,3 +1,4 @@
+import 'package:cancerconnector/pages/createrequest.dart';
 import 'package:cancerconnector/pages/messagespage.dart';
 import 'package:cancerconnector/pages/profilepage.dart';
 import 'package:cancerconnector/pages/searchpage.dart';
@@ -41,7 +42,7 @@ class _BottomBarState extends State<BottomBar> {
             size: 27,
             color: Colors.white,
           );
-        } else if (menuIcon.contains('Donation')) {
+        } else if (menuIcon.contains('Request')) {
           icon = Image.asset(
             'assets/Blood Drop.png',
             fit: BoxFit.scaleDown,
@@ -81,8 +82,8 @@ class _BottomBarState extends State<BottomBar> {
           Get.to(() => const AuthGate());
         } else if (menusRoutes[index]['page']
             .toLowerCase()
-            .contains('location')) {
-          Get.to(() => const HomePage());
+            .contains('request')) {
+          Get.to(() => const CreateRequestPage());
         } else if (menusRoutes[index]['page']
             .toLowerCase()
             .contains('search')) {
