@@ -1,10 +1,16 @@
 import 'package:cancerconnector/json/json_app.dart';
+import 'package:cancerconnector/pages/finddonorspage.dart';
+import 'package:cancerconnector/pages/reportpage.dart';
+import 'package:cancerconnector/pages/searchpage.dart';
 import 'package:cancerconnector/services/auth_service.dart';
 import 'package:cancerconnector/themes/app_strings.dart';
 import 'package:cancerconnector/themes/styles.dart';
+import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widgets/bottombar.dart';
+import '../widgets/custom_menu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,14 +63,19 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 10,
               ),
-              InkWell(
+              const Text(
+                "App By: PikiDelivery",
+                style: TextStyle(color: Colors.white),
+              ),
+              const Text(
+                "Phone: 0782954717",
+                style: TextStyle(color: Colors.white),
+              ),
+              MyCustomBtn(
                 onTap: () async {
                   await AuthService().signOut();
                 },
-                child: const Text(
-                  "Logout",
-                  style: TextStyle(color: Colors.white),
-                ),
+                buttonText: "Logout",
               ),
             ],
           ),
@@ -158,10 +169,15 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    customMenus(
-                        size: size,
-                        title: "Find Doctors",
-                        imgPath: "assets/ion_search-outline.png"),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const SearchPage());
+                      },
+                      child: customMenus(
+                          size: size,
+                          title: "Find Doctors",
+                          imgPath: "assets/ion_search-outline.png"),
+                    ),
                     customMenus(
                         size: size,
                         title: "Donates",
@@ -180,14 +196,24 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    customMenus(
-                        size: size,
-                        title: "Assistant",
-                        imgPath: "assets/maki_doctor-11.png"),
-                    customMenus(
-                        size: size,
-                        title: "Report",
-                        imgPath: "assets/la_file-medical-alt.png"),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const FindDonorsPage());
+                      },
+                      child: customMenus(
+                          size: size,
+                          title: "Assistant",
+                          imgPath: "assets/maki_doctor-11.png"),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const ReportPage());
+                      },
+                      child: customMenus(
+                          size: size,
+                          title: "Report",
+                          imgPath: "assets/la_file-medical-alt.png"),
+                    ),
                     customMenus(
                         size: size,
                         title: "Campaign",
@@ -214,78 +240,42 @@ class _HomePageState extends State<HomePage> {
                 BoxShadow(
                     blurRadius: 20,
                     offset: const Offset(5, 10),
-                    color: Colors.black.withOpacity(0.4))
+                    color: Colors.black.withOpacity(0.1))
               ]),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Name",
-                    style: appBigTitle,
-                  ),
-                  const Text("Gene Piki"),
-                  Text(
-                    "Location",
-                    style: appBigTitle,
-                  ),
-                  const Text("Harare, Zimbabwe"),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("34min ago"),
-                      Text(
-                        "Donate",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: primaryColor,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ],
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Name",
+                      style: appBigTitle,
+                    ),
+                    const Text("Gene Piki"),
+                    Text(
+                      "Location",
+                      style: appBigTitle,
+                    ),
+                    const Text("Harare, Zimbabwe"),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("34min ago"),
+                        Text(
+                          "Donate",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: primaryColor,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(
               height: 100,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget customMenus(
-      {required size, required String title, required String imgPath}) {
-    return Container(
-      width: size.width / 3,
-      height: 100,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                blurRadius: 10,
-                offset: const Offset(5, 5),
-                color: Colors.black.withOpacity(0.1)),
-            BoxShadow(
-                blurRadius: 10,
-                offset: const Offset(-5, -5),
-                color: Colors.grey.withOpacity(0.1))
-          ]),
-      child: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              imgPath,
-              height: 40,
-            ),
-            FittedBox(
-              child: Text(
-                title,
-                style: const TextStyle(color: Colors.black),
-              ),
             ),
           ],
         ),
