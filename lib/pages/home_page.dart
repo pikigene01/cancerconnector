@@ -179,10 +179,16 @@ class _HomePageState extends State<HomePage> {
                           title: "Find Doctors",
                           imgPath: "assets/ion_search-outline.png"),
                     ),
+                    const SizedBox(
+                      width: 8,
+                    ),
                     customMenus(
                         size: size,
                         title: "Donates",
                         imgPath: "assets/openmoji_blood-transfusion.png"),
+                    const SizedBox(
+                      width: 8,
+                    ),
                     customMenus(
                         size: size,
                         title: "Order Bloods",
@@ -206,6 +212,9 @@ class _HomePageState extends State<HomePage> {
                           title: "Assistant",
                           imgPath: "assets/maki_doctor-11.png"),
                     ),
+                    const SizedBox(
+                      width: 8,
+                    ),
                     InkWell(
                       onTap: () {
                         Get.to(const ReportPage());
@@ -214,6 +223,9 @@ class _HomePageState extends State<HomePage> {
                           size: size,
                           title: "Report",
                           imgPath: "assets/la_file-medical-alt.png"),
+                    ),
+                    const SizedBox(
+                      width: 8,
                     ),
                     customMenus(
                         size: size,
