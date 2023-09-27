@@ -5,6 +5,7 @@ import 'package:cancerconnector/pages/searchpage.dart';
 import 'package:cancerconnector/services/auth_service.dart';
 import 'package:cancerconnector/themes/app_strings.dart';
 import 'package:cancerconnector/themes/styles.dart';
+import 'package:cancerconnector/widgets/cards.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -234,46 +235,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Container(
-              width: size.width - 10,
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                    blurRadius: 20,
-                    offset: const Offset(5, 10),
-                    color: Colors.black.withOpacity(0.1))
-              ]),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Name",
-                      style: appBigTitle,
-                    ),
-                    const Text("Gene Piki"),
-                    Text(
-                      "Location",
-                      style: appBigTitle,
-                    ),
-                    const Text("Harare, Zimbabwe"),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("34min ago"),
-                        Text(
-                          "Donate",
-                          style: TextStyle(
-                              fontSize: 30,
-                              color: primaryColor,
-                              fontWeight: FontWeight.w800),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            requestCard(size: size),
             const SizedBox(
               height: 100,
             ),

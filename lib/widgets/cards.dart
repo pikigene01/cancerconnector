@@ -33,7 +33,7 @@ Widget requestCard({required size}) {
               Text(
                 "Donate",
                 style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 20,
                     color: primaryColor,
                     fontWeight: FontWeight.w800),
               ),
