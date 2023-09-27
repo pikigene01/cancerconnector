@@ -1,6 +1,7 @@
 import 'package:cancerconnector/themes/styles.dart';
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/cards.dart';
+import 'package:cancerconnector/widgets/getSearch.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   var inputTextController = TextEditingController();
+  var searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -34,44 +36,8 @@ class _SearchPageState extends State<SearchPage> {
           const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: size.width / 1.2,
-                  child: TextField(
-                    expands: true,
-                    maxLines: null,
-                    keyboardType: TextInputType.text,
-                    controller: inputTextController,
-                    obscureText: false,
-                    decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: primaryColor)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintText: "Search",
-                      hintStyle: TextStyle(color: Colors.black),
-                      prefixStyle: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                  child: Container(
-                    decoration: const BoxDecoration(color: primaryColor),
-                    child: Image.asset("assets/Group 25.png"),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          getSearchBarSearch(
+              size: size, searchController: searchController, onTap: () {}),
           requestCard(size: size),
           const SizedBox(
             height: 10,

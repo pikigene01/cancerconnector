@@ -26,12 +26,17 @@ Widget requestCard({required size}) {
             style: appBigTitle,
           ),
           const Text("Harare, Zimbabwe"),
+          Text(
+            "Description",
+            style: appBigTitle,
+          ),
+          const Text("l faced issue on"),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("34min ago"),
               Text(
-                "Donate",
+                "Offer Help",
                 style: TextStyle(
                     fontSize: 20,
                     color: primaryColor,

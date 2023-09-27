@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: customMenus(
                           size: size,
-                          title: "Find Doctors",
+                          title: "Offer Help",
                           imgPath: "assets/ion_search-outline.png"),
                     ),
                     const SizedBox(
@@ -244,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Donation Request",
+                    "Help Requests",
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
