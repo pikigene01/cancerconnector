@@ -9,6 +9,7 @@ import 'package:cancerconnector/widgets/cards.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/bottombar.dart';
 import '../widgets/custom_menu.dart';
@@ -74,7 +75,9 @@ class _HomePageState extends State<HomePage> {
               ),
               MyCustomBtn(
                 onTap: () async {
-                  await AuthService().signOut();
+                  final authService =
+                      Provider.of<AuthService>(context, listen: false);
+                  authService.signOut();
                 },
                 buttonText: "Logout",
               ),
