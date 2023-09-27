@@ -6,6 +6,11 @@ List menusRoutes = [
   {"page": "Message", "icon": "FontAwesomeIcons.solidMessage"},
   {"page": "Profile", "icon": "FontAwesomeIcons.profile"}
 ];
+List doctors = [
+  {"name": "Doctor 1", "image": "assets/Rectangle 24.png"},
+  {"name": "Doctor 2", "image": "assets/Rectangle 25.png"},
+  {"name": "Doctor 3", "image": "assets/Rectangle 26.png"},
+];
 List menuSlides = [
   {"title": "Winery", "image": "assets/wine.png"},
   {"title": "Gaming", "image": "assets/gaming.jpg"},

@@ -1,4 +1,6 @@
+import 'package:cancerconnector/json/json_app.dart';
 import 'package:cancerconnector/widgets/bottombar.dart';
+import 'package:cancerconnector/widgets/cards.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,7 @@ class _FindDonorsPageState extends State<FindDonorsPage> {
         child: Column(
       children: [
         topBar(pageTitle: "Find Doctors", size: size),
+        doctorsCard(size: size, doctor: doctors[1]),
       ],
     ));
   }
