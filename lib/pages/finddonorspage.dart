@@ -14,6 +14,7 @@ class FindDonorsPage extends StatefulWidget {
 
 class _FindDonorsPageState extends State<FindDonorsPage> {
   var searchController = TextEditingController();
+  String searchValue = "";
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -30,10 +31,17 @@ class _FindDonorsPageState extends State<FindDonorsPage> {
         children: [
           topBar(pageTitle: "Find Doctors", size: size),
           getSearchBarSearch(
-              size: size, searchController: searchController, onTap: () {}),
+              size: size,
+              searchController: searchController,
+              onTap: () {
+                setState(() {
+                  searchValue = searchController.text;
+                });
+              }),
           Column(
             children: doctors.reversed
-                .map((doctor) => doctorsCard(size: size, doctor: doctor))
+                .map((doctor) => doctorsCard(
+                    size: size, doctor: doctor, search: searchValue.toString()))
                 .toList(),
           ),
         ],

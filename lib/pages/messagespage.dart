@@ -21,7 +21,9 @@ class _MessagesPageState extends State<MessagesPage> {
   String searchValue = "";
   final _searchController = TextEditingController();
   void onTapFUnction() {
-    print("object");
+    setState(() {
+      searchValue = _searchController.text;
+    });
   }
 
   @override
