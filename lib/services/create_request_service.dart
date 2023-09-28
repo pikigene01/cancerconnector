@@ -59,14 +59,14 @@ class CreateRequestService extends ChangeNotifier {
         .snapshots();
   }
 
-  Stream<Object> getYourProfile() {
+  Stream<QuerySnapshot> getYourProfile() {
     //construct chat room id from user ids sorted to ensure it matches the id when sending the message
     final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
 
     return _fireStore
         .collection('users')
-        .doc(_firebaseAuth.currentUser!.uid)
-        // .where('email', isEqualTo: currentUserEmail.toString())
+        // .doc(_firebaseAuth.currentUser!.uid)
+        .where('email', isEqualTo: currentUserEmail.toString())
         .snapshots();
   }
 

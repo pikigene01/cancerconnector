@@ -20,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   var fullNameTextController = TextEditingController();
   var _requestService = CreateRequestService();
   bool isDoctor = false;
+  var userProfile = [];
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -100,22 +101,24 @@ class _ProfilePageState extends State<ProfilePage> {
               isBigInput: true,
             ),
           ),
-          buildProfile(context),
+          buildProfile(),
           MyCustomBtn(onTap: () {}, buttonText: "Update Profile"),
         ],
       )),
     );
   }
 
-  Widget buildProfile(BuildContext context) {
+  Widget buildProfile() {
     return StreamBuilder(
         stream: _requestService.getYourProfile(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Text("Loading");
+        builder: (context, snapshots) {
+          if (snapshots.hasError) {
+            return Text("Error");
           }
-          var userDocument = snapshot.data;
-          return Text(userDocument.toString());
+          if (snapshots.connectionState == ConnectionState.waiting) {
+            return Text("Loading please wait");
+          }
+          return Text(snapshots.data!.docs[0]["full_name"].toString());
         });
   }
 }
