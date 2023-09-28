@@ -1,3 +1,4 @@
+import 'package:cancerconnector/models/profile_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,41 @@ class CreateRequestService extends ChangeNotifier {
         .doc('request')
         .collection('all')
         .add(newRequest.toMap());
+  }
+
+  Future<void> saveProfile({
+    required String location,
+    required String description,
+    required String? name,
+    required String? imageURL,
+    required bool isDoctor,
+  }) async {
+    //get current user info
+    final String currentUserId = _firebaseAuth.currentUser!.uid;
+    final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
+    final Timestamp timestamp = Timestamp.now();
+    //create a new message
+    ProfileModel newProfile = ProfileModel(
+        name: name.toString(),
+        email: currentUserEmail,
+        isDoctor: isDoctor,
+        imageUrl: imageURL.toString(),
+        description: description,
+        location: location,
+        timestamp: timestamp);
+
+    await _fireStore.collection('profiles').add(newProfile.toMap());
+  }
+
+  Stream<QuerySnapshot> getProfiles({String? latitude, String? longitude}) {
+    //construct chat room id from user ids sorted to ensure it matches the id when sending the message
+    List<String> ids = [latitude.toString(), longitude.toString()];
+    ids.sort();
+
+    return _fireStore
+        .collection('profiles')
+        .orderBy('timestamp', descending: true)
+        .snapshots();
   }
 
   Future<void> updateProfile({required String userEmail}) async {

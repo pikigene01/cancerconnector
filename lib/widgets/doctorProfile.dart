@@ -10,13 +10,11 @@ Widget getDoctorProfile({required doctor, required size}) {
     child: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: Image.asset(doctor!["image"]).image,
-            backgroundColor: Colors.white,
-            radius: 50,
-          ),
-        ),
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              radius: 50,
+              backgroundImage: NetworkImage(doctor!["imageUrl"].toString()),
+            )),
         Text(
           doctor["name"],
           style: appBigTitle,

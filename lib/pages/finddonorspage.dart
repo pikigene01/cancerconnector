@@ -1,4 +1,5 @@
 import 'package:cancerconnector/json/json_app.dart';
+import 'package:cancerconnector/services/create_request_service.dart';
 import 'package:cancerconnector/themes/styles.dart';
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/cards.dart';
@@ -17,6 +18,7 @@ class FindDonorsPage extends StatefulWidget {
 
 class _FindDonorsPageState extends State<FindDonorsPage> {
   var searchController = TextEditingController();
+  var _requestService = CreateRequestService();
   String searchValue = "";
   @override
   Widget build(BuildContext context) {
@@ -41,20 +43,47 @@ class _FindDonorsPageState extends State<FindDonorsPage> {
                   searchValue = searchController.text;
                 });
               }),
-          Column(
-            children: doctors.reversed
-                .map((doctor) => doctorsCard(
-                    size: size,
-                    doctor: doctor,
-                    search: searchValue.toString(),
-                    onTap: () {
-                      doctorProfile(doctor: doctor);
-                    }))
-                .toList(),
-          ),
+          _buildDoctorsProfiles(size: size),
+          // Column(
+          //   children: doctors.reversed
+          //       .map((doctor) => doctorsCard(
+          //           size: size,
+          //           doctor: doctor,
+          //           search: searchValue.toString(),
+          //           onTap: () {
+          //             doctorProfile(doctor: doctor);
+          //           }))
+          //       .toList(),
+          // ),
         ],
       )),
     );
+  }
+
+  Widget _buildDoctorsProfiles({required size}) {
+    return StreamBuilder(
+        stream: _requestService.getProfiles(),
+        builder: (context, snapshots) {
+          if (snapshots.hasError) {
+            return const Text("Error occured");
+          }
+
+          if (snapshots.connectionState == ConnectionState.waiting) {
+            return const Text("Data Loading");
+          }
+
+          return Column(
+            children: snapshots.data!.docs
+                .map((doc) => doctorsCard(
+                    size: size,
+                    doctor: doc,
+                    search: searchValue.toString(),
+                    onTap: () {
+                      doctorProfile(doctor: doc);
+                    }))
+                .toList(),
+          );
+        });
   }
 
   void doctorProfile({required doctor}) {

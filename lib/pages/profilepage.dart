@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cancerconnector/json/json_app.dart';
+import 'package:cancerconnector/pages/successpage.dart';
 import 'package:cancerconnector/services/create_request_service.dart';
 import 'package:cancerconnector/themes/styles.dart';
 import 'package:firebase_storage/firebase_storage.dart' as storage;
@@ -11,9 +12,11 @@ import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../services/geo_locator_service.dart';
 import '../widgets/my_text_fields.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -25,12 +28,61 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   var fullNameTextController = TextEditingController();
-  var _requestService = CreateRequestService();
+  var addressController = TextEditingController();
+  var descriptionController = TextEditingController();
+  final geoloocationService = GeoLocationService();
+  final _requestService = CreateRequestService();
   bool isDoctor = false;
   var userProfile = [];
   bool uploading = false;
   var profileImg = "";
   final ImagePicker _picker = ImagePicker();
+
+  void saveProfilePage() async {
+    setState(() {
+      uploading = true;
+    });
+
+    var geolocationResults = await geoloocationService.getLocationCoordinates();
+    if (geolocationResults!['error'] == true) {
+      var msg = geolocationResults['msg'] ?? '';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(msg.toString()),
+        ),
+      );
+    }
+    setState(() {
+      addressController.text = geolocationResults!['address'].toString();
+    });
+
+    if (addressController.text == "null" ||
+        descriptionController.text.isEmpty ||
+        addressController.text.isEmpty ||
+        fullNameTextController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(
+          'Please fill all fields',
+        ),
+      ));
+      setState(() {
+        uploading = false;
+      });
+      return;
+    }
+
+    var results = _requestService.saveProfile(
+        location: addressController.text,
+        description: descriptionController.text,
+        name: fullNameTextController.text,
+        imageURL: profileImg.toString(),
+        isDoctor: isDoctor);
+    setState(() {
+      uploading = false;
+    });
+    Get.to(const SuccessPage());
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -111,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: MyTextFieldWidget(
-              controller: fullNameTextController,
+              controller: addressController,
               hintText: "Please Enter Your Location",
               obscureText: false,
               isBigInput: false,
@@ -120,14 +172,14 @@ class _ProfilePageState extends State<ProfilePage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: MyTextFieldWidget(
-              controller: fullNameTextController,
+              controller: descriptionController,
               hintText: "Please Enter Your Bio",
               obscureText: false,
               isBigInput: true,
             ),
           ),
           buildProfile(),
-          MyCustomBtn(onTap: () {}, buttonText: "Update Profile"),
+          MyCustomBtn(onTap: saveProfilePage, buttonText: "Update Profile"),
         ],
       )),
     );

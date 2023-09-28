@@ -9,6 +9,7 @@ Widget requestCard({required size, required doc}) {
     scrollDirection: Axis.horizontal,
     child: Column(children: [
       Container(
+        width: size.width,
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
               blurRadius: 20,
@@ -38,7 +39,8 @@ Widget requestCard({required size, required doc}) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(doc!["timestamp"].toString()),
+                  Text(DateTime.parse(doc!["timestamp"].toDate().toString())
+                      .toString()),
                   InkWell(
                     onTap: () {
                       Get.to(ChatViewPage(
@@ -89,15 +91,14 @@ Widget doctorsCard(
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Image.asset(
-                  doctor!['image'].toString(),
-                  width: 100,
-                  height: 100,
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(doctor!["imageUrl"].toString()),
                 ),
                 Column(
                   children: [
                     Text(doctor!['name'].toString()),
-                    Text(doctor!['location'].toString()),
+                    Text(doctor!['location'].toString().substring(0, 30)),
                   ],
                 ),
                 InkWell(
