@@ -1,5 +1,6 @@
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
+import 'package:cancerconnector/widgets/my_text_fields.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,12 @@ class CreateRequestPage extends StatefulWidget {
 }
 
 class _CreateRequestPageState extends State<CreateRequestPage> {
+  var addressController = TextEditingController();
+  var problemDescriptionController = TextEditingController();
+  void createRequest() {
+    print("creating new request");
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -29,7 +36,23 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
           const SizedBox(
             height: 10,
           ),
-          MyCustomBtn(onTap: () {}, buttonText: "Create Your Request"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: MyTextFieldWidget(
+                controller: addressController,
+                hintText: "Enter Your Address",
+                obscureText: false,
+                isBigInput: false),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: MyTextFieldWidget(
+                controller: problemDescriptionController,
+                hintText: "Describe your problem",
+                obscureText: false,
+                isBigInput: true),
+          ),
+          MyCustomBtn(onTap: createRequest, buttonText: "Create Your Request"),
         ],
       )),
     );
