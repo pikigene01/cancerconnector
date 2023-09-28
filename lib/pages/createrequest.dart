@@ -1,8 +1,10 @@
+import 'package:cancerconnector/pages/successpage.dart';
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:cancerconnector/widgets/my_text_fields.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CreateRequestPage extends StatefulWidget {
   const CreateRequestPage({super.key});
@@ -16,6 +18,7 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
   var problemDescriptionController = TextEditingController();
   void createRequest() {
     print("creating new request");
+    Get.to(const SuccessPage());
   }
 
   @override
