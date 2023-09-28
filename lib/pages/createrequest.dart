@@ -6,6 +6,9 @@ import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../services/create_request_service.dart';
+import '../services/geo_locator_service.dart';
+
 class CreateRequestPage extends StatefulWidget {
   const CreateRequestPage({super.key});
 
@@ -16,8 +19,60 @@ class CreateRequestPage extends StatefulWidget {
 class _CreateRequestPageState extends State<CreateRequestPage> {
   var addressController = TextEditingController();
   var problemDescriptionController = TextEditingController();
-  void createRequest() {
-    print("creating new request");
+  final geoloocationService = GeoLocationService();
+  final _requestService = CreateRequestService();
+  String? longitude;
+  String? latitude;
+
+  bool loading = false;
+  void createRequest() async {
+    setState(() {
+      loading = true;
+    });
+
+    var geolocationResults = await geoloocationService.getLocationCoordinates();
+    if (geolocationResults!['error'] == true) {
+      var msg = geolocationResults['msg'] ?? '';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(msg.toString()),
+        ),
+      );
+    }
+    setState(() {
+      longitude = geolocationResults!['longitude'].toString();
+      latitude = geolocationResults!['latitude'].toString();
+      addressController.text = geolocationResults!['address'].toString();
+    });
+
+    if (problemDescriptionController.text.isEmpty ||
+        addressController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(
+          'Please fill all fields',
+        ),
+      ));
+      setState(() {
+        loading = false;
+      });
+      return;
+    }
+    var result = await _requestService.saveRequest(
+      name: "Gene Piki",
+      location: addressController.text,
+      description: problemDescriptionController.text,
+      longitude: geolocationResults!['longitude'].toString(),
+      latitude: geolocationResults!['latitude'].toString(),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        'Your Item Created Successfully...',
+      ),
+    ));
+    setState(() {
+      loading = false;
+    });
     Get.to(const SuccessPage());
   }
 
@@ -55,7 +110,10 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
                 obscureText: false,
                 isBigInput: true),
           ),
-          MyCustomBtn(onTap: createRequest, buttonText: "Create Your Request"),
+          loading
+              ? MyCustomBtn(onTap: () {}, buttonText: "Creating Please Wait")
+              : MyCustomBtn(
+                  onTap: createRequest, buttonText: "Create Your Request"),
         ],
       )),
     );
