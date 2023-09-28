@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+import '../services/create_request_service.dart';
 import '../widgets/bottombar.dart';
 import '../widgets/custom_menu.dart';
 
@@ -25,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   int activeMenu = 0;
   bool isSearching = false;
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
+  final _requestService = CreateRequestService();
 
   String? addressFromLocation = "";
   String? longitude = "";
@@ -265,13 +267,32 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            requestCard(size: size),
+            _buildeRequestCards(size: size),
             const SizedBox(
               height: 100,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildeRequestCards({required size}) {
+    return StreamBuilder(
+      stream: _requestService.getRequests(latitude: "", longitude: ""),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Text("Error Whilst loading");
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text('Loading please wait..');
+        }
+        return Column(
+          children: snapshot.data!.docs
+              .map((document) => requestCard(size: size,doc: document))
+              .toList(),
+        );
+      },
     );
   }
 }
