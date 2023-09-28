@@ -45,7 +45,8 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
       addressController.text = geolocationResults!['address'].toString();
     });
 
-    if (problemDescriptionController.text.isEmpty ||
+    if (addressController.text == "null" ||
+        problemDescriptionController.text.isEmpty ||
         addressController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text(
