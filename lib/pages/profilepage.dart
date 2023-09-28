@@ -1,8 +1,10 @@
 import 'package:cancerconnector/json/json_app.dart';
+import 'package:cancerconnector/services/create_request_service.dart';
 import 'package:cancerconnector/themes/styles.dart';
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/my_text_fields.dart';
@@ -16,6 +18,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   var fullNameTextController = TextEditingController();
+  var _requestService = CreateRequestService();
   bool isDoctor = false;
   @override
   Widget build(BuildContext context) {
@@ -97,9 +100,22 @@ class _ProfilePageState extends State<ProfilePage> {
               isBigInput: true,
             ),
           ),
+          buildProfile(context),
           MyCustomBtn(onTap: () {}, buttonText: "Update Profile"),
         ],
       )),
     );
+  }
+
+  Widget buildProfile(BuildContext context) {
+    return StreamBuilder(
+        stream: _requestService.getYourProfile(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Text("Loading");
+          }
+          var userDocument = snapshot.data;
+          return Text(userDocument.toString());
+        });
   }
 }
