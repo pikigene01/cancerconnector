@@ -50,7 +50,11 @@ Widget requestCard({required size}) {
   );
 }
 
-Widget doctorsCard({required size, required doctor, required String search}) {
+Widget doctorsCard(
+    {required size,
+    required doctor,
+    required String search,
+    required void Function()? onTap}) {
   if (doctor['name'].toString().contains(search) ||
       doctor['location'].toString().contains(search)) {
     return Container(
@@ -80,12 +84,15 @@ Widget doctorsCard({required size, required doctor, required String search}) {
                     Text(doctor!['location'].toString()),
                   ],
                 ),
-                const Text(
-                  "View",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: primaryColor,
-                      fontWeight: FontWeight.w800),
+                InkWell(
+                  onTap: onTap,
+                  child: const Text(
+                    "View",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: primaryColor,
+                        fontWeight: FontWeight.w800),
+                  ),
                 ),
               ],
             ),
