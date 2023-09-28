@@ -185,17 +185,27 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       width: 8,
                     ),
-                    customMenus(
-                        size: size,
-                        title: "Donates",
-                        imgPath: "assets/openmoji_blood-transfusion.png"),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const SearchPage());
+                      },
+                      child: customMenus(
+                          size: size,
+                          title: "Donates",
+                          imgPath: "assets/openmoji_blood-transfusion.png"),
+                    ),
                     const SizedBox(
                       width: 8,
                     ),
-                    customMenus(
-                        size: size,
-                        title: "Order Bloods",
-                        imgPath: "assets/si-glyph_blood-bag.png"),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const FindDonorsPage());
+                      },
+                      child: customMenus(
+                          size: size,
+                          title: "Order Bloods",
+                          imgPath: "assets/si-glyph_blood-bag.png"),
+                    ),
                   ],
                 ),
               ),
@@ -230,10 +240,15 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       width: 8,
                     ),
-                    customMenus(
-                        size: size,
-                        title: "Campaign",
-                        imgPath: "assets/grommet-icons_announce.png"),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const SearchPage());
+                      },
+                      child: customMenus(
+                          size: size,
+                          title: "Campaign",
+                          imgPath: "assets/grommet-icons_announce.png"),
+                    ),
                   ],
                 ),
               ),
