@@ -16,6 +16,8 @@ class LogInSignUp extends StatefulWidget {
 
 class _LogInSignUpState extends State<LogInSignUp> {
   var emailTextController = TextEditingController();
+  var fullNameTextController = TextEditingController();
+  bool isDoctor = false;
   var passwordTextController = TextEditingController();
   var confirmTextController = TextEditingController();
   bool toggleLogin = false;
@@ -54,8 +56,8 @@ class _LogInSignUpState extends State<LogInSignUp> {
     }
     final authService = Provider.of<AuthService>(context, listen: false);
     try {
-      await authService.signUpWithEmailandPassword(
-          emailTextController.text, passwordTextController.text);
+      await authService.signUpWithEmailandPassword(emailTextController.text,
+          passwordTextController.text, fullNameTextController.text, isDoctor);
     } catch (e) {
       setState(() {
         loading = false;
@@ -93,6 +95,31 @@ class _LogInSignUpState extends State<LogInSignUp> {
                 'Welcome to our app',
                 style: appStyleText,
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              toggleLogin
+                  ? MyTextFieldWidget(
+                      controller: fullNameTextController,
+                      hintText: "Please Enter Your Full Name",
+                      obscureText: false,
+                      isBigInput: false,
+                    )
+                  : Container(),
+              toggleLogin
+                  ? Row(
+                      children: [
+                        const Text("Are you a doctor?"),
+                        Checkbox(
+                            value: isDoctor,
+                            onChanged: (data) {
+                              setState(() {
+                                isDoctor = !isDoctor;
+                              });
+                            }),
+                      ],
+                    )
+                  : Container(),
               const SizedBox(
                 height: 10,
               ),

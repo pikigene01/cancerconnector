@@ -23,7 +23,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
             height: 20,
           ),
           Text(
-            "Find Donors",
+            "Find Doctors",
             style: appBigTitle,
           ),
           const SizedBox(
@@ -32,7 +32,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu tristique tristique quam in.",
+              "We have specialists which helps patients in all sort of problems they might face.",
               style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),

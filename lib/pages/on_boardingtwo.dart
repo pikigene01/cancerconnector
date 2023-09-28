@@ -33,7 +33,7 @@ class _OnBoardingTwoState extends State<OnBoardingTwo> {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu tristique tristique quam in.",
+              "Give ideas and remedies to people who got affected.",
               style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),

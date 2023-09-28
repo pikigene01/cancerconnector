@@ -36,7 +36,7 @@ class _OnBoardingThreeState extends State<OnBoardingThree> {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu tristique tristique quam in.",
+              "You have something you want to give this is the right place for you.",
               style: TextStyle(color: Colors.black, fontSize: 20),
             ),
           ),
