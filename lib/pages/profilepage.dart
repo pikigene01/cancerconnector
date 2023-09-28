@@ -113,10 +113,10 @@ class _ProfilePageState extends State<ProfilePage> {
         stream: _requestService.getYourProfile(),
         builder: (context, snapshots) {
           if (snapshots.hasError) {
-            return Text("Error");
+            return const Text("Error");
           }
           if (snapshots.connectionState == ConnectionState.waiting) {
-            return Text("Loading please wait");
+            return const Text("Loading please wait");
           }
           return Text(snapshots.data!.docs[0]["full_name"].toString());
         });
