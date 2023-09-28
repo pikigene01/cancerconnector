@@ -57,8 +57,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 70,
                   ),
                 )
-              : CachedNetworkImage(
-                  width: 80, height: 80, imageUrl: profileImg.toString()),
+              : InkWell(
+                  onTap: () {
+                    _selectPhoto(imgStateName: 'profileImg');
+                  },
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(profileImg.toString()),
+                  ),
+                ),
           const SizedBox(
             height: 60,
           ),
