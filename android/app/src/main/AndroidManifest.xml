@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     
     <application
-        android:label="Piki DeliveryApp"
+        android:label="CancerConnector"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
