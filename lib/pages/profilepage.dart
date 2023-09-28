@@ -1,11 +1,18 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cancerconnector/json/json_app.dart';
 import 'package:cancerconnector/services/create_request_service.dart';
 import 'package:cancerconnector/themes/styles.dart';
+import 'package:firebase_storage/firebase_storage.dart' as storage;
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../widgets/my_text_fields.dart';
 
@@ -21,6 +28,9 @@ class _ProfilePageState extends State<ProfilePage> {
   var _requestService = CreateRequestService();
   bool isDoctor = false;
   var userProfile = [];
+  bool uploading = false;
+  var profileImg = "";
+  final ImagePicker _picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -37,10 +47,18 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
         children: [
           topBar(pageTitle: "Your Profile", size: size),
-          Image.asset(
-            doctors[1]["image"].toString(),
-            height: 70,
-          ),
+          profileImg.isEmpty
+              ? InkWell(
+                  onTap: () {
+                    _selectPhoto(imgStateName: 'profileImg');
+                  },
+                  child: Image.asset(
+                    doctors[1]["image"].toString(),
+                    height: 70,
+                  ),
+                )
+              : CachedNetworkImage(
+                  width: 80, height: 80, imageUrl: profileImg.toString()),
           const SizedBox(
             height: 60,
           ),
@@ -120,5 +138,73 @@ class _ProfilePageState extends State<ProfilePage> {
           }
           return Text(snapshots.data!.docs[0]["full_name"].toString());
         });
+  }
+
+  Future _selectPhoto({required imgStateName}) async {
+    await showModalBottomSheet(
+        context: context,
+        builder: (context) => BottomSheet(
+            onClosing: () {},
+            builder: (context) => Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ListTile(
+                        leading: const Icon(Icons.camera),
+                        title: const Text('Camera'),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          _pickImage(
+                              source: ImageSource.camera,
+                              imgStateName: imgStateName);
+                        }),
+                    ListTile(
+                        leading: const Icon(Icons.image),
+                        title: const Text('Pick your product image'),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          _pickImage(
+                              source: ImageSource.gallery,
+                              imgStateName: imgStateName);
+                        }),
+                  ],
+                )));
+  }
+
+  Future _pickImage(
+      {required ImageSource source, required imgStateName}) async {
+    final pickedFile =
+        await _picker.pickImage(source: source, imageQuality: 50);
+    if (pickedFile == null) {
+      return;
+    }
+    var file = await ImageCropper().cropImage(
+        sourcePath: pickedFile.path,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1));
+    if (file == null) {
+      return;
+    }
+
+    await _uploadFile(path: file.path, imgStateName: imgStateName);
+  }
+
+  Future _uploadFile({String? path, required imgStateName}) async {
+    setState(() {
+      uploading = true;
+    });
+    Reference reference = storage.FirebaseStorage.instance.ref(path);
+
+    final TaskSnapshot snapshot =
+        await reference.putFile(File(path.toString()));
+
+    final downloadUrl = await snapshot.ref.getDownloadURL();
+
+    setState(() {
+      uploading = false;
+      if (imgStateName.contains('profileImg')) {
+        profileImg = downloadUrl;
+      } else if (imgStateName.contains('img2')) {
+        profileImg = downloadUrl;
+      }
+    });
   }
 }
