@@ -90,7 +90,8 @@ class _ProfilePageState extends State<ProfilePage> {
         name: fullNameTextController.text,
         description: descriptionController.text,
         documentId: documentReference,
-        isDoctor: isDoctor);
+        isDoctor: isDoctor,
+        location: addressController.text);
     Get.to(const SuccessPage());
   }
 
