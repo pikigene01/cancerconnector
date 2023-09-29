@@ -106,6 +106,23 @@ class CreateRequestService extends ChangeNotifier {
         .snapshots();
   }
 
+  void updateProfileUser(
+      {required imageUrl,
+      required name,
+      required description,
+      required documentId,
+      required isDoctor}) async {
+    final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
+    DocumentReference documenDeleteReference =
+        _fireStore.collection('profiles').doc(documentId);
+    await documenDeleteReference.update({
+      name: name,
+      description: description,
+      imageUrl: imageUrl,
+      isDoctor: isDoctor
+    });
+  }
+
   Future<void> deleteYourRequest(
       {required Timestamp timestamp, required documentId}) async {
     //construct chat room id from user ids sorted to ensure it matches the id when sending the message

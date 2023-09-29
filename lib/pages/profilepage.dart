@@ -31,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
   var descriptionController = TextEditingController();
   final geoloocationService = GeoLocationService();
   final _requestService = CreateRequestService();
+  var documentReference = "";
   bool isDoctor = false;
   var userProfile = [];
   bool uploading = false;
@@ -83,6 +84,16 @@ class _ProfilePageState extends State<ProfilePage> {
     Get.to(const SuccessPage());
   }
 
+  void updateProfilePage() async {
+    _requestService.updateProfileUser(
+        imageUrl: profileImg,
+        name: fullNameTextController.text,
+        description: descriptionController.text,
+        documentId: documentReference,
+        isDoctor: isDoctor);
+    Get.to(const SuccessPage());
+  }
+
   void getUserProfileData() async {
     var results = _requestService.getYourProfile().first;
     results.then((value) {
@@ -93,6 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
         descriptionController.text = profile["description"];
         isDoctor = profile["isDoctor"];
         profileImg = profile["imageUrl"];
+        documentReference = profile.id;
 
         isUpdate = true;
       });
@@ -203,7 +215,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           isUpdate
-              ? MyCustomBtn(onTap: () {}, buttonText: "Update Profile")
+              ? MyCustomBtn(
+                  onTap: updateProfilePage, buttonText: "Update Profile")
               : MyCustomBtn(
                   onTap: saveProfilePage, buttonText: "Create Profile"),
         ],
