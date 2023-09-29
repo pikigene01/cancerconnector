@@ -70,6 +70,7 @@ class CreateRequestService extends ChangeNotifier {
     return _fireStore
         .collection('profiles')
         .orderBy('timestamp', descending: true)
+        .where('isDoctor', isEqualTo: true)
         .snapshots();
   }
 
