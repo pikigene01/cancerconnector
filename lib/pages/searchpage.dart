@@ -72,7 +72,8 @@ class _SearchPageState extends State<SearchPage> {
 
           return Column(
             children: snapshot.data!.docs
-                .map((document) => requestCard(size: size, doc: document))
+                .map((document) =>
+                    requestCard(size: size, doc: document, search: searchValue))
                 .toList(),
           );
         });

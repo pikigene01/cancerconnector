@@ -4,68 +4,73 @@ import 'package:get/get.dart';
 
 import '../themes/styles.dart';
 
-Widget requestCard({required size, required doc}) {
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: Column(children: [
-      Container(
-        width: size.width,
-        decoration: BoxDecoration(color: Colors.white, boxShadow: [
-          BoxShadow(
-              blurRadius: 20,
-              offset: const Offset(5, 10),
-              color: Colors.black.withOpacity(0.1))
-        ]),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Name",
-                style: appBigTitle,
-              ),
-              Text(doc!["name"].toString()),
-              Text(
-                "Location",
-                style: appBigTitle,
-              ),
-              Text(doc!["location"].toString()),
-              Text(
-                "Description",
-                style: appBigTitle,
-              ),
-              Text(doc!["description"].toString()),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(DateTime.parse(doc!["timestamp"].toDate().toString())
-                      .toString()),
-                  InkWell(
-                    onTap: () {
-                      Get.to(ChatViewPage(
-                          receiverEmail: doc!["email"].toString(),
-                          receiverUserId: doc!["email"].toString()));
-                    },
-                    child: const Text(
-                      "Offer Help",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: primaryColor,
-                          fontWeight: FontWeight.w800),
+Widget requestCard({required size, required doc, required search}) {
+  if (doc['name'].toString().toLowerCase().contains(search.toString().toLowerCase()) ||
+      doc['location'].toString().toString().contains(search.toString().toLowerCase())) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Column(children: [
+        Container(
+          width: size.width,
+          decoration: BoxDecoration(color: Colors.white, boxShadow: [
+            BoxShadow(
+                blurRadius: 20,
+                offset: const Offset(5, 10),
+                color: Colors.black.withOpacity(0.1))
+          ]),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Name",
+                  style: appBigTitle,
+                ),
+                Text(doc!["name"].toString()),
+                Text(
+                  "Location",
+                  style: appBigTitle,
+                ),
+                Text(doc!["location"].toString()),
+                Text(
+                  "Description",
+                  style: appBigTitle,
+                ),
+                Text(doc!["description"].toString()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(DateTime.parse(doc!["timestamp"].toDate().toString())
+                        .toString()),
+                    InkWell(
+                      onTap: () {
+                        Get.to(ChatViewPage(
+                            receiverEmail: doc!["email"].toString(),
+                            receiverUserId: doc!["email"].toString()));
+                      },
+                      child: const Text(
+                        "Offer Help",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: primaryColor,
+                            fontWeight: FontWeight.w800),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      const SizedBox(
-        height: 10,
-      ),
-    ]),
-  );
+        const SizedBox(
+          height: 10,
+        ),
+      ]),
+    );
+  } else {
+    return Container();
+  }
 }
 
 Widget doctorsCard(

@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   String? latitude = "";
   String? country = "";
   bool locating = false;
+  String searchValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -289,7 +290,8 @@ class _HomePageState extends State<HomePage> {
         }
         return Column(
           children: snapshot.data!.docs
-              .map((document) => requestCard(size: size,doc: document))
+              .map((document) =>
+                  requestCard(size: size, doc: document, search: searchValue))
               .toList(),
         );
       },

@@ -23,6 +23,7 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
   final _requestService = CreateRequestService();
   String? longitude;
   String? latitude;
+  String username = "";
 
   bool loading = false;
   void createRequest() async {
@@ -59,7 +60,7 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
       return;
     }
     var result = await _requestService.saveRequest(
-      name: "Gene Piki",
+      name: username,
       location: addressController.text,
       description: problemDescriptionController.text,
       longitude: geolocationResults!['longitude'].toString(),
@@ -75,6 +76,21 @@ class _CreateRequestPageState extends State<CreateRequestPage> {
       loading = false;
     });
     Get.to(const SuccessPage());
+  }
+
+  void updateUserName() {
+    _requestService.getYourProfile().first.then((value) {
+      var profile = value.docs[0];
+      setState(() {
+        username = profile["name"];
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    updateUserName();
   }
 
   @override
