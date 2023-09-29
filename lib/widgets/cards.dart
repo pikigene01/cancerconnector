@@ -96,6 +96,7 @@ Widget doctorsCard(
                   backgroundImage: NetworkImage(doctor!["imageUrl"].toString()),
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(doctor!['name'].toString()),
                     Text(doctor!['location'].toString().substring(0, 30)),
