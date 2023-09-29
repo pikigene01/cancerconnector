@@ -85,47 +85,51 @@ Widget doctorsCard(
     required String search,
     required void Function()? onTap}) {
   if (doctor['name'].toString().toLowerCase().contains(search.toLowerCase())) {
-    return Container(
-      width: size.width - 10,
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(
-            blurRadius: 20,
-            offset: const Offset(5, 10),
-            color: Colors.black.withOpacity(0.1))
-      ]),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: primaryColor,
-                  backgroundImage: NetworkImage(doctor!["imageUrl"].toString()),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(doctor!['name'].toString()),
-                    Text(doctor!['location'].toString().substring(0, 30)),
-                  ],
-                ),
-                InkWell(
-                  onTap: onTap,
-                  child: const Text(
-                    "View",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: primaryColor,
-                        fontWeight: FontWeight.w800),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Container(
+        width: size.width,
+        decoration: BoxDecoration(color: Colors.white, boxShadow: [
+          BoxShadow(
+              blurRadius: 20,
+              offset: const Offset(5, 10),
+              color: Colors.black.withOpacity(0.1))
+        ]),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: primaryColor,
+                    backgroundImage:
+                        NetworkImage(doctor!["imageUrl"].toString()),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(doctor!['name'].toString()),
+                      Text(doctor!['location'].toString()),
+                    ],
+                  ),
+                  InkWell(
+                    onTap: onTap,
+                    child: const Text(
+                      "View",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: primaryColor,
+                          fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
