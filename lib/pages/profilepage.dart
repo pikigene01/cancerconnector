@@ -4,12 +4,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cancerconnector/json/json_app.dart';
 import 'package:cancerconnector/pages/successpage.dart';
 import 'package:cancerconnector/services/create_request_service.dart';
-import 'package:cancerconnector/themes/styles.dart';
 import 'package:firebase_storage/firebase_storage.dart' as storage;
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
 import 'package:cancerconnector/widgets/topbar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,6 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
   bool uploading = false;
   var profileImg = "";
   final ImagePicker _picker = ImagePicker();
+  bool isUpdate = false;
 
   void saveProfilePage() async {
     setState(() {
@@ -83,6 +82,29 @@ class _ProfilePageState extends State<ProfilePage> {
     Get.to(const SuccessPage());
   }
 
+  void getUserProfileData() async {
+    var results = _requestService.getYourProfile().first;
+    results.then((value) {
+      setState(() {
+        var profile = value.docs.toList()[0];
+        fullNameTextController.text = profile["name"];
+        addressController.text = profile["location"];
+        descriptionController.text = profile["description"];
+        isDoctor = profile["isDoctor"];
+        profileImg = profile["imageUrl"];
+
+        isUpdate = true;
+      });
+      print(value.docs.toList()[0]["email"].toString());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserProfileData();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -122,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 60,
           ),
           Text(
-            doctors[1]["name"],
+            fullNameTextController.text,
             style: const TextStyle(
                 fontSize: 20, fontWeight: FontWeight.w900, color: Colors.black),
           ),
@@ -133,7 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 "assets/map-pin.png",
                 height: 30,
               ),
-              Text(doctors[1]!["location"].toString()),
+              Text(addressController.text.toString()),
             ],
           ),
           Padding(
@@ -178,25 +200,13 @@ class _ProfilePageState extends State<ProfilePage> {
               isBigInput: true,
             ),
           ),
-          buildProfile(),
-          MyCustomBtn(onTap: saveProfilePage, buttonText: "Update Profile"),
+          isUpdate
+              ? MyCustomBtn(onTap: () {}, buttonText: "Update Profile")
+              : MyCustomBtn(
+                  onTap: saveProfilePage, buttonText: "Create Profile"),
         ],
       )),
     );
-  }
-
-  Widget buildProfile() {
-    return StreamBuilder(
-        stream: _requestService.getYourProfile(),
-        builder: (context, snapshots) {
-          if (snapshots.hasError) {
-            return const Text("Error");
-          }
-          if (snapshots.connectionState == ConnectionState.waiting) {
-            return const Text("Loading please wait");
-          }
-          return Text(snapshots.data!.docs[0]["full_name"].toString());
-        });
   }
 
   Future _selectPhoto({required imgStateName}) async {

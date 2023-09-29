@@ -100,7 +100,7 @@ class CreateRequestService extends ChangeNotifier {
     final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
 
     return _fireStore
-        .collection('users')
+        .collection('profiles')
         // .doc(_firebaseAuth.currentUser!.uid)
         .where('email', isEqualTo: currentUserEmail.toString())
         .snapshots();
