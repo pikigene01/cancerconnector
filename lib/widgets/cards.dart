@@ -93,6 +93,7 @@ Widget doctorsCard(
               children: [
                 CircleAvatar(
                   radius: 30,
+                  backgroundColor: primaryColor,
                   backgroundImage: NetworkImage(doctor!["imageUrl"].toString()),
                 ),
                 Column(

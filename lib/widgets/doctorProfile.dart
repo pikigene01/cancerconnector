@@ -13,6 +13,7 @@ Widget getDoctorProfile({required doctor, required size}) {
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 50,
+              backgroundColor: primaryColor,
               backgroundImage: NetworkImage(doctor!["imageUrl"].toString()),
             )),
         Text(

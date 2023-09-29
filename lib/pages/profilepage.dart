@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cancerconnector/json/json_app.dart';
 import 'package:cancerconnector/pages/successpage.dart';
 import 'package:cancerconnector/services/create_request_service.dart';
+import 'package:cancerconnector/themes/styles.dart';
 import 'package:firebase_storage/firebase_storage.dart' as storage;
 import 'package:cancerconnector/widgets/bottombar.dart';
 import 'package:cancerconnector/widgets/custom_btn.dart';
@@ -137,6 +138,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                   child: CircleAvatar(
                     radius: 50,
+                    backgroundColor: primaryColor,
                     backgroundImage: NetworkImage(profileImg.toString()),
                   ),
                 ),
