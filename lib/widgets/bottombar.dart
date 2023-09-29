@@ -3,6 +3,7 @@ import 'package:cancerconnector/pages/messagespage.dart';
 import 'package:cancerconnector/pages/profilepage.dart';
 import 'package:cancerconnector/pages/searchpage.dart';
 import 'package:cancerconnector/services/auth_gate.dart';
+import 'package:cancerconnector/services/home_guard.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -97,7 +98,7 @@ class _BottomBarState extends State<BottomBar> {
             .contains('settings')) {
           Get.to(() => null);
         } else if (menusRoutes[index]['page'].toLowerCase().contains('home')) {
-          Get.to(() => const HomePage());
+          Get.to(() => const HomeGuard());
         }
 
         setState(() {

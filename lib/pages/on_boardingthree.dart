@@ -1,4 +1,5 @@
 import 'package:cancerconnector/pages/login.dart';
+import 'package:cancerconnector/services/loginsignupguard.dart';
 import 'package:cancerconnector/widgets/bottom_navigations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,7 @@ class _OnBoardingThreeState extends State<OnBoardingThree> {
           ),
           MyCustomBtn(
             onTap: () {
-              Get.to(const LogInSignUp());
+              Get.to(const LoginSignUpGuard());
             },
             buttonText: "Register",
           ),
@@ -54,7 +55,7 @@ class _OnBoardingThreeState extends State<OnBoardingThree> {
           ),
           MyCustomBtn(
             onTap: () {
-              Get.to(const LogInSignUp());
+              Get.to(const LoginSignUpGuard());
             },
             buttonText: "Login",
           ),

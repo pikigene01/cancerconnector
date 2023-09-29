@@ -34,39 +34,41 @@ class _WelocomePageState extends State<WelocomePage> {
   }
 
   Widget getBody() {
-    return Column(
-      children: [
-        currentBoard == 1
-            ? OnBoardingOne(
-                prevPage: () {
-                  prevPage();
-                },
-                nextPage: () {
-                  nextPage();
-                },
-              )
-            : const SizedBox(),
-        currentBoard == 2
-            ? OnBoardingTwo(
-                prevPage: () {
-                  prevPage();
-                },
-                nextPage: () {
-                  nextPage();
-                },
-              )
-            : const SizedBox(),
-        currentBoard == 3
-            ? OnBoardingThree(
-                prevPage: () {
-                  prevPage();
-                },
-                nextPage: () {
-                  nextPage();
-                },
-              )
-            : const SizedBox(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          currentBoard == 1
+              ? OnBoardingOne(
+                  prevPage: () {
+                    prevPage();
+                  },
+                  nextPage: () {
+                    nextPage();
+                  },
+                )
+              : const SizedBox(),
+          currentBoard == 2
+              ? OnBoardingTwo(
+                  prevPage: () {
+                    prevPage();
+                  },
+                  nextPage: () {
+                    nextPage();
+                  },
+                )
+              : const SizedBox(),
+          currentBoard == 3
+              ? OnBoardingThree(
+                  prevPage: () {
+                    prevPage();
+                  },
+                  nextPage: () {
+                    nextPage();
+                  },
+                )
+              : const SizedBox(),
+        ],
+      ),
     );
   }
 }
