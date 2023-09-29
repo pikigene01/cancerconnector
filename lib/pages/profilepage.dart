@@ -96,6 +96,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void getUserProfileData() async {
+    setState(() {
+      uploading = true;
+    });
     var results = _requestService.getYourProfile().first;
     results.then((value) {
       setState(() {
@@ -108,6 +111,7 @@ class _ProfilePageState extends State<ProfilePage> {
         documentReference = profile.id;
 
         isUpdate = true;
+        uploading = false;
       });
       print(value.docs.toList()[0]["email"].toString());
     });
@@ -215,11 +219,13 @@ class _ProfilePageState extends State<ProfilePage> {
               isBigInput: true,
             ),
           ),
-          isUpdate
-              ? MyCustomBtn(
-                  onTap: updateProfilePage, buttonText: "Update Profile")
-              : MyCustomBtn(
-                  onTap: saveProfilePage, buttonText: "Create Profile"),
+          uploading
+              ? MyCustomBtn(onTap: () {}, buttonText: "Saving Please Wait...")
+              : isUpdate
+                  ? MyCustomBtn(
+                      onTap: updateProfilePage, buttonText: "Update Profile")
+                  : MyCustomBtn(
+                      onTap: saveProfilePage, buttonText: "Create Profile"),
         ],
       )),
     );
