@@ -5,8 +5,14 @@ import 'package:get/get.dart';
 import '../themes/styles.dart';
 
 Widget requestCard({required size, required doc, required search}) {
-  if (doc['name'].toString().toLowerCase().contains(search.toString().toLowerCase()) ||
-      doc['location'].toString().toString().contains(search.toString().toLowerCase())) {
+  if (doc['name']
+          .toString()
+          .toLowerCase()
+          .contains(search.toString().toLowerCase()) ||
+      doc['location']
+          .toString()
+          .toString()
+          .contains(search.toString().toLowerCase())) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Column(children: [
@@ -78,8 +84,7 @@ Widget doctorsCard(
     required doctor,
     required String search,
     required void Function()? onTap}) {
-  if (doctor['name'].toString().contains(search) ||
-      doctor['location'].toString().contains(search)) {
+  if (doctor['name'].toString().toLowerCase().contains(search.toLowerCase())) {
     return Container(
       width: size.width - 10,
       decoration: BoxDecoration(color: Colors.white, boxShadow: [
