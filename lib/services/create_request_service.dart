@@ -116,11 +116,12 @@ class CreateRequestService extends ChangeNotifier {
       required documentId,
       required isDoctor,
       required location}) async {
-    final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
+    final String currentUserId = _firebaseAuth.currentUser!.uid.toString();
     DocumentReference documenDeleteReference =
         _fireStore.collection('profiles').doc(documentId);
     await documenDeleteReference.update({
       "name": name,
+      "userid": currentUserId,
       "description": description,
       "imageUrl": imageUrl,
       "isDoctor": isDoctor,
