@@ -144,9 +144,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   onTap: () {
                     _selectPhoto(imgStateName: 'profileImg');
                   },
-                  child: Image.asset(
-                    doctors[1]["image"].toString(),
-                    height: 70,
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: Image.asset(
+                      "assets/placeholder.png",
+                      height: 70,
+                    ).image,
                   ),
                 )
               : InkWell(
