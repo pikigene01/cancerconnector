@@ -115,6 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
       });
       print(value.docs.toList()[0]["email"].toString());
     });
+    uploading = false;
   }
 
   @override
