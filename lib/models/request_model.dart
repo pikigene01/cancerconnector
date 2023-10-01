@@ -7,6 +7,7 @@ class RequestHelpModel {
   final String location;
   final String? longitude;
   final String? latitude;
+  final String? userid;
   final Timestamp timestamp;
 
   RequestHelpModel({
@@ -15,6 +16,7 @@ class RequestHelpModel {
     required this.email,
     required this.timestamp,
     required this.location,
+    required this.userid,
     this.longitude,
     this.latitude,
   });
@@ -29,6 +31,7 @@ class RequestHelpModel {
       'location': location,
       'longitude': longitude,
       'latitude': latitude,
+      'user_id': userid,
       'timestamp': timestamp,
     };
   }

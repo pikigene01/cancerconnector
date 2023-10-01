@@ -53,7 +53,7 @@ Widget requestCard({required size, required doc, required search}) {
                       onTap: () {
                         Get.to(ChatViewPage(
                             receiverEmail: doc!["email"].toString(),
-                            receiverUserId: doc!["email"].toString()));
+                            receiverUserId: doc!["userid"].toString()));
                       },
                       child: const Text(
                         "Offer Help",
@@ -88,7 +88,7 @@ Widget doctorsCard(
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        width: size.width,
+        // width: size.width,
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
               blurRadius: 20,

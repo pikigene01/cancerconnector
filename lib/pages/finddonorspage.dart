@@ -72,16 +72,22 @@ class _FindDonorsPageState extends State<FindDonorsPage> {
             return const Text("Data Loading");
           }
 
-          return Column(
-            children: snapshots.data!.docs
-                .map((doc) => doctorsCard(
-                    size: size,
-                    doctor: doc,
-                    search: searchValue.toString(),
-                    onTap: () {
-                      doctorProfile(doctor: doc);
-                    }))
-                .toList(),
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
+              children: [
+                ...snapshots.data!.docs.map((doc) => SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: doctorsCard(
+                          size: size,
+                          doctor: doc,
+                          search: searchValue.toString(),
+                          onTap: () {
+                            doctorProfile(doctor: doc);
+                          }),
+                    ))
+              ],
+            ),
           );
         });
   }

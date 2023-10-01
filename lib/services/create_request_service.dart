@@ -26,6 +26,7 @@ class CreateRequestService extends ChangeNotifier {
       email: currentUserEmail,
       description: description,
       timestamp: timestamp,
+      userid: currentUserId,
       longitude: longitude,
       latitude: latitude,
       location: location,
@@ -55,6 +56,7 @@ class CreateRequestService extends ChangeNotifier {
         email: currentUserEmail,
         isDoctor: isDoctor,
         imageUrl: imageURL.toString(),
+        userid: currentUserId,
         description: description,
         location: location,
         timestamp: timestamp);

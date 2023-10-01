@@ -35,7 +35,7 @@ Widget getDoctorProfile({required doctor, required size}) {
             onTap: () {
               Get.to(ChatViewPage(
                   receiverEmail: doctor!["email"].toString(),
-                  receiverUserId: doctor!["email"].toString()));
+                  receiverUserId: doctor!["userid"].toString()));
             },
             buttonText: "Get Help"),
       ],

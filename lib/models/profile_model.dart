@@ -5,6 +5,7 @@ class ProfileModel {
   final String email;
   final String imageUrl;
   final String location;
+  final String userid;
   final String description;
   final bool isDoctor;
   final Timestamp timestamp;
@@ -15,6 +16,7 @@ class ProfileModel {
       required this.imageUrl,
       required this.description,
       required this.location,
+      required this.userid,
       required this.isDoctor,
       required this.timestamp});
 
@@ -24,6 +26,7 @@ class ProfileModel {
       "email": email,
       "description": description,
       "imageUrl": imageUrl,
+      "user_id": userid,
       "location": location,
       "isDoctor": isDoctor,
       "timestamp": timestamp
