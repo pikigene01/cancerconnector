@@ -31,7 +31,7 @@ class RequestHelpModel {
       'location': location,
       'longitude': longitude,
       'latitude': latitude,
-      'user_id': userid,
+      'userid': userid,
       'timestamp': timestamp,
     };
   }
