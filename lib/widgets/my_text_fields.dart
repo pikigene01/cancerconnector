@@ -128,6 +128,9 @@ class TextWidget extends StatelessWidget {
       keyboardType: TextInputType.text,
       controller: widget.controller,
       obscureText: widget.obscureText,
+      // expands: true,
+      // minLines: 1,
+      // maxLines: 4,
       decoration: InputDecoration(
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
