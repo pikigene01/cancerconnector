@@ -111,9 +111,14 @@ class _HomePageState extends State<HomePage> {
                       width: 20,
                     ),
                   ),
-                  Image.asset(
-                    "assets/Vector.png",
-                    width: 20,
+                  InkWell(
+                    onTap: () {
+                      Get.to(() => const SearchPage());
+                    },
+                    child: Image.asset(
+                      "assets/Vector.png",
+                      width: 20,
+                    ),
                   ),
                 ],
               ),
@@ -176,6 +181,9 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
                     InkWell(
                       onTap: () {
                         Get.to(const SearchPage());
@@ -209,6 +217,9 @@ class _HomePageState extends State<HomePage> {
                           title: "Order Bloods",
                           imgPath: "assets/si-glyph_blood-bag.png"),
                     ),
+                    const SizedBox(
+                      width: 8,
+                    ),
                   ],
                 ),
               ),
@@ -219,6 +230,9 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
                     InkWell(
                       onTap: () {
                         Get.to(const FindDonorsPage());
@@ -251,6 +265,9 @@ class _HomePageState extends State<HomePage> {
                           size: size,
                           title: "Campaign",
                           imgPath: "assets/grommet-icons_announce.png"),
+                    ),
+                    const SizedBox(
+                      width: 10,
                     ),
                   ],
                 ),
