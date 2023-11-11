@@ -23,6 +23,15 @@ class AuthService extends ChangeNotifier {
     }
   }
 
+  void resetUserPassword(String email) async {
+    try {
+      //we can now try the sign in
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw Exception(e.code);
+    }
+  }
+
   //sign up functionality
   Future<UserCredential> signUpWithEmailandPassword(
       String email, String password, String fullName, bool isDoctor) async {

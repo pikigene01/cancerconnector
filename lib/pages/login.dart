@@ -1,5 +1,7 @@
+import 'package:cancerconnector/pages/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth_service.dart';
@@ -85,7 +87,7 @@ class _LogInSignUpState extends State<LogInSignUp> {
                 height: 30,
               ),
               Image.asset(
-                "assets/logo.png",
+                "assets/logo new.png",
                 width: 60,
               ),
               const SizedBox(
@@ -175,6 +177,21 @@ class _LogInSignUpState extends State<LogInSignUp> {
                           buttonText: 'Loading please wait..',
                           onTap: () {},
                         ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  InkWell(
+                      onTap: () {
+                        Get.to(const ResetPasswordPage());
+                      },
+                      child: const Text(
+                        'Forgot your password',
+                        style: TextStyle(color: Colors.red),
+                      )),
+                ],
+              ),
               const SizedBox(
                 height: 10,
               ),
