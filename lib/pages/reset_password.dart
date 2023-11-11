@@ -27,6 +27,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     final authService = Provider.of<AuthService>(context, listen: false);
     try {
       authService.resetUserPassword(emailTextController.text);
+      setState(() {
+        loading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Reset Link Have been sent!!!'),
+      ));
     } catch (e) {
       setState(() {
         loading = false;
