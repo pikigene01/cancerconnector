@@ -74,7 +74,7 @@ dev_dependencies:
 flutter_icons:    
  android: "launcher_icon"    
  ios: true    
- image_path: "assets/Blood Drop.png"
+ image_path: "assets/logo new.png"
 
 # The following section is specific to Flutter packages.
 flutter:

@@ -45,9 +45,9 @@ class _BottomBarState extends State<BottomBar> {
           );
         } else if (menuIcon.contains('Request')) {
           icon = Image.asset(
-            'assets/Blood Drop.png',
+            'assets/logo new.png',
             fit: BoxFit.scaleDown,
-            height: 80,
+            height: 50,
           );
         } else if (menuIcon.contains('Message')) {
           icon = const FaIcon(
